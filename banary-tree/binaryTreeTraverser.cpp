@@ -15,17 +15,27 @@ class Node{
 };
 
 // root - left - right
-void preorder(){
-
+void preorder(Node *root ){
+    if( root == NULL ) return;
+    
+    cout << root->val << " ";
+    preorder(root->left);
+    preorder(root->right);
 }
 // left - root - right
-void inorder(){
-
+void inorder(Node *root ){
+    if( root == NULL ) return;
+    inorder(root->left);
+    cout << root->val << " ";
+    inorder(root->right);
 }
 
 // left-right-root
-void postorder(){
-
+void postorder(Node *root){
+    if( root == NULL ) return;
+    postorder(root->left);
+    postorder(root->right);
+    cout << root->val << " ";
 }
 
 int main(){
@@ -55,9 +65,11 @@ int main(){
     e->left = h;
 
     // traversal
-    preorder();
-    inorder();
-    postorder();
+    preorder(root);
+    cout << endl;
+    inorder(root);
+    cout << endl;
+    postorder(root);
 
     return 0;
 }
